@@ -1,3 +1,14 @@
+# Autotools junk at top level
+/autom4te.cache/
+/aclocal.m4
+/config.h
+/config.h.in
+/config.log
+/config.status
+/configure
+/libtool
+/stamp-h1
+
 # Compiled Object files
 *.slo
 *.lo
@@ -18,3 +29,11 @@ test_runner
 statsite
 .vagrant
 *.pyc
+*.tar.gz
+
+# Various tool outputs in all dirs
+Makefile
+Makefile.in
+.dirstamp
+.deps
+.libs

@@ -110,7 +110,7 @@ static int stream_formatter(FILE *pipe, void *data, metric_type type, char *name
 
         case COUNTER:
             if (GLOBAL_CONFIG->extended_counters) {
-                STREAM("%s%s.count|%lld|%lld\n", prefix, name, counter_count(value));
+                STREAM("%s%s.count|%lu|%llu\n", prefix, name, counter_count(value));
                 STREAM("%s%s.mean|%f|%lld\n", prefix, name, counter_mean(value));
                 STREAM("%s%s.stdev|%f|%lld\n", prefix, name, counter_stddev(value));
                 STREAM("%s%s.sum|%f|%lld\n", prefix, name, counter_sum(value));
@@ -124,7 +124,7 @@ static int stream_formatter(FILE *pipe, void *data, metric_type type, char *name
             break;
 
         case SET:
-            STREAM("%s%s|%lld|%lld\n", prefix, name, set_size(value));
+            STREAM("%s%s|%lu|%llu\n", prefix, name, set_size(value));
             break;
 
         case TIMER:
@@ -134,7 +134,7 @@ static int stream_formatter(FILE *pipe, void *data, metric_type type, char *name
             STREAM("%s%s.mean|%f|%lld\n", prefix, name, timer_mean(&t->tm));
             STREAM("%s%s.lower|%f|%lld\n", prefix, name, timer_min(&t->tm));
             STREAM("%s%s.upper|%f|%lld\n", prefix, name, timer_max(&t->tm));
-            STREAM("%s%s.count|%lld|%lld\n", prefix, name, timer_count(&t->tm));
+            STREAM("%s%s.count|%lu|%lld\n", prefix, name, timer_count(&t->tm));
             STREAM("%s%s.stdev|%f|%lld\n", prefix, name, timer_stddev(&t->tm));
             STREAM("%s%s.median|%f|%lld\n", prefix, name, timer_query(&t->tm, 0.5));
             STREAM("%s%s.p95|%f|%lld\n", prefix, name, timer_query(&t->tm, 0.95));

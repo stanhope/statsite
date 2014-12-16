@@ -8,6 +8,7 @@
 /configure
 /libtool
 /stamp-h1
+config/*
 
 # Compiled Object files
 *.slo
